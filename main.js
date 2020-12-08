@@ -130,4 +130,5 @@ const arrowFunction = async()=>{
 const IIFE = (async()=>{console.log('즉시 실행 함수 표현식')})();
 
 const { d, g, ...rest2 } = { d: 4, e: { f: 6 }, g: 7, h: 8 }
+
 console.log(rest2);
