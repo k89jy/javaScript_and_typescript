@@ -132,3 +132,26 @@ const IIFE = (async()=>{console.log('즉시 실행 함수 표현식')})();
 const { d, g, ...rest2 } = { d: 4, e: { f: 6 }, g: 7, h: 8 }
 
 console.log(rest2);
+
+interface IUser {
+    name:String,
+    age:number
+}
+
+let userA: IUser = {
+    name:'HEROPY',
+    age:123
+}
+
+let num: number = undefined;
+
+let str: string = null;
+
+let obj: {a:1, b:false} = undefined;
+
+let arr : any[] = null;
+
+let und: undefined = null;
+
+let nul: null = undefined;
+let voi: void = null;
