@@ -4,22 +4,19 @@
 // if(true){
 //     var x = 3;
 // }
-// console.log(x)  // 3 
+// console.log(x)  // 3
 
 // if(true){
 //     const y = 3;
 // }
 // console.log(y) // undefined
 
-
 // //에러가 발생하지 않는다.
 //     console.log(x);
-//     var x = 10 
+//     var x = 10
 // //에러가 발생한다.
 //     console.log(z)
 //     const z = 10;
-
-
 
 // //const는 주소값을 고정한다. 즉 객체나 배열의 요소르르 바꾸는 것은 막지 않는다.
 //     const c = [1, 2, 3];
@@ -27,7 +24,7 @@
 //     c; // [4, 2, 3]
 //     const d = {name: 'Zero'};
 //     d.name = 'One';
-//     d; // {name: 'One'} 
+//     d; // {name: 'One'}
 
 // //함수 관련
 
@@ -36,7 +33,6 @@
 // };
 
 // func2()
-
 
 // // rest라고 하고 x를 제외한 나머지 인자들은 y 배열로 만드는 것이다. rest는 마지막 인자로 와야한다.
 // const func4 = (x, ...y)=> {
@@ -97,7 +93,6 @@
 // const newZero = new Zero('human','Zero','cho');
 // Human.isHuman(newZero)
 
-
 // for(var i in 'string'){console.log(i)}
 // for(var i of 'string'){console.log(i)}
 
@@ -105,53 +100,137 @@
 
 // for(let j of array1){console.log(j)}
 
-//promise all
+// //promise all
 
-let p1 = Promise.resolve('zero'); // new Promise 없이 성공한 Promise 객체를 만드는 방법
-let p2 = Promise.resolve('nero');
-let p3 = Promise.reject('error'); // new Promise 없이 실패한 Promise 객체를 만드는 방법
+// let p1 = Promise.resolve("zero"); // new Promise 없이 성공한 Promise 객체를 만드는 방법
+// let p2 = Promise.resolve("nero");
+// let p3 = Promise.reject("error"); // new Promise 없이 실패한 Promise 객체를 만드는 방법
 
-//promise.all은 메소드로 여러 프로미스 객체들을 한번에 모아서 처리할 수 있습니다.
-Promise.all([p1,p2,p3])
-.then(result=>{
-    console.log(result)
-})
-.catch(err=>{
-    console.log(err)
-})
+// //promise.all은 메소드로 여러 프로미스 객체들을 한번에 모아서 처리할 수 있습니다.
+// Promise.all([p1, p2, p3])
+//   .then((result) => {
+//     console.log(result);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
+// const functionExpression = async function () {
+//   console.log("함수 표현식");
+// };
+// const arrowFunction = async () => {
+//   console.log("화살표 함수");
+// };
+// const IIFE = (async () => {
+//   console.log("즉시 실행 함수 표현식");
+// })();
 
-const functionExpression = async function(){
-    console.log('함수 표현식')
+// const { d, g, ...rest2 } = { d: 4, e: { f: 6 }, g: 7, h: 8 };
+
+// console.log(rest2);
+
+async function foo (something) {
+  return new Promise((resolve, reject) => {
+     setTimeout(function () {
+        resolve("3초 지났습니다.");
+    }, 3000);
+  
+  });
 };
-const arrowFunction = async()=>{
-    console.log('화살표 함수')
+
+async function foo1 () {
+  return new Promise((resolve, reject) => {
+     setTimeout(function () {
+        resolve("1초 지났습니다.");
+    }, 1000);
+    
+  });
+};
+
+async function afoo() {
+  try {
+    let val1 = await foo(0);
+    console.log(val1)
+    let val2 = await foo1(0);
+    console.log(val2)
+    
+  } catch (err) {
+    console.log(err);
+  }
 }
-const IIFE = (async()=>{console.log('즉시 실행 함수 표현식')})();
 
-const { d, g, ...rest2 } = { d: 4, e: { f: 6 }, g: 7, h: 8 }
+afoo();
 
-console.log(rest2);
 
-interface IUser {
-    name:String,
-    age:number
-}
+// function getDrink() {
+//     return new Promise((resolve, reject) => {
+//         resolve('orange juice')
+//     })
+// }
 
-let userA: IUser = {
-    name:'HEROPY',
-    age:123
-}
+// async function fun() {
+//     let drinks = await getDrink();
+//     console.log(drinks) // orange juice
+// }
 
-let num: number = undefined;
+// fun()
+// console.log('=======finish======')
+// /*
 
-let str: string = null;
 
-let obj: {a:1, b:false} = undefined;
+// */
 
-let arr : any[] = null;
+// function fetchUser(){
+//     // do network request in 10 sec....
+//     return 'done'
+// }
 
-let und: undefined = null;
+// const user = fetchUser();1
+// console.log(user);
 
-let nul: null = undefined;
-let voi: void = null;
+// function time1 (){
+//     setTimeout(function(){
+
+//         console.log('2초')
+//     },2000)
+// }
+
+// function time2(){
+//     setTimeout(function(){
+//         console.log('1초')
+//     },1000)
+// }
+
+// async function foo3(){
+//     await time1()
+//     await time2()
+// }
+// //foo3()
+
+function resolveAfter2Seconds() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve('resolved2');
+      }, 2000);
+    });
+  }
+  function resolveAfter1Seconds() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve('resolved1');
+      }, 1000);
+    });
+  }
+  
+  
+  async function asyncCall() {
+    console.log('calling');
+    const result1 = await resolveAfter2Seconds();
+    console.log(result1);
+    const result2 = await resolveAfter1Seconds();
+    console.log(result2);
+    // expected output: "resolved"
+  }
+  
+  asyncCall();
+  
